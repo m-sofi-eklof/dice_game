@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 ///GAME CLASS
 /*
-* The following class contains the game logic for a simple console dice game
-* Its set for two players with two throws each, but can be altered through variables numberOfPlayers and turnsPerGame
-* Game logic runs when .init() is called for any class object
-* The class uses a switch case menu to allow for easier build out
+* The following class contains the game logic for a simple console dice game.
+* A match is set up for two players with two throws, but this can be altered through variables numberOfPlayers and
+* turnsPerGame respectively.
+* Game logic runs when the .init() function is called for any class object.
 * */
 public class Game {
     ///GAME VARIABLES
@@ -38,14 +38,14 @@ public class Game {
 
 
     private String itsATie =(
-             "                ██╗████████╗███████╗     █████╗     ████████╗██╗███████╗\n"+
-             "▄ ██╗▄          ██║╚══██╔══╝██╔════╝    ██╔══██╗    ╚══██╔══╝██║██╔════╝        ▄ ██╗▄\n"+
-             " ████╗    █████╗██║   ██║   ███████╗    ███████║       ██║   ██║█████╗█████╗     ████╗\n"+
-             "▀╚██╔▀    ╚════╝██║   ██║   ╚════██║    ██╔══██║       ██║   ██║██╔══╝╚════╝    ▀╚██╔▀\n"+
-             "  ╚═╝           ██║   ██║   ███████║    ██║  ██║       ██║   ██║███████╗          ╚═╝\n" +
-             "                ╚═╝   ╚═╝   ╚══════╝    ╚═╝  ╚═╝       ╚═╝   ╚═╝╚══════╝\n");
+             "              ██╗████████╗███████╗     █████╗     ████████╗██╗███████╗\n"+
+             "▄ ██╗▄        ██║╚══██╔══╝██╔════╝    ██╔══██╗    ╚══██╔══╝██║██╔════╝      ▄ ██╗▄\n"+
+             " ████╗  █████╗██║   ██║   ███████╗    ███████║       ██║   ██║█████╗█████╗   ████╗\n"+
+             "▀╚██╔▀  ╚════╝██║   ██║   ╚════██║    ██╔══██║       ██║   ██║██╔══╝╚════╝  ▀╚██╔▀\n"+
+             "  ╚═╝         ██║   ██║   ███████║    ██║  ██║       ██║   ██║███████╗        ╚═╝\n" +
+             "              ╚═╝   ╚═╝   ╚══════╝    ╚═╝  ╚═╝       ╚═╝   ╚═╝╚══════╝\n");
 
-    //dice variables to visually represent the result of .thow() method (see Dice class)
+    //String variables to visually represent the result of the .thow() method (see Dice class)
     private String dice1 =(
                     "+-------+\n" +
                     "|       |\n" +
@@ -98,7 +98,7 @@ public class Game {
     /// STATIC METHODS
     /// printMenu()
     /*
-    * The printMenu() method prints ASCII grafics which relay the options for the user at the base of the game
+    * The printMenu() method prints ASCII grafics which relay the different options for the user at the base of the game
     */
     private static void printMenu(){
 
@@ -124,11 +124,12 @@ public class Game {
     /// INSTANCE METHODS
     /// .init()
     /*
-    * The .init() method prints a game menu, and uses console input and output allow users to play a simple Dice Game
-    * Note that when the user exits using Quit input the function closes the program
+    * The .init() method uses console input and output to allow users to play a simple Dice Game.
+    * Please note that when the user exits game using Quit input in the switch-case loop, the function closes the
+    * whole program.
     */
     public void init() {
-        Scanner scanner = new Scanner(System.in);//initialises scanner
+        Scanner scanner = new Scanner(System.in);//creates scanner object
         while (game) { //Start of game loop
 
             //MENU
@@ -143,7 +144,7 @@ public class Game {
                         break;
                     case "Quit":
                         System.out.println("Good Bye!");
-                        switchCase=false;
+                        scanner.close();
                         System.exit(0);//exit program
                     default:
                         System.out.println("Invalid choice.");
@@ -176,7 +177,7 @@ public class Game {
             //MATCH
             System.out.println(letsGO);
             for (Player player : players) {
-                while (player.getTurnCounter()<turnsPerGame){
+                while (player.getTurnCounter()<turnsPerGame){ //turnCounter starts off 0 (see Player class)
                     player.incrementTurnCounter();
                     System.out.println("It's "+player.getFirstName()+"s turn!");
                     System.out.println("Press enter to roll dice...");
@@ -228,17 +229,17 @@ public class Game {
             //announce winner
             if (winners.size() == 1) {
                 System.out.println(youWon);
-                System.out.println("Congratulations " + winners.get(0).getFirstName() +" "+ winners.get(0).getLastName()+ "!");
+                System.out.println("Congratulations " + winners.get(0).getFullName()+"!");
             }
             //or announce tie
             else {
                 System.out.println(itsATie);
                 for (Player player : winners) {
-                    System.out.println(player.getFirstName() + " " + player.getLastName());
+                    System.out.println(player.getFullName());
                 }
                 System.out.println("Congratulations! You got a score of " + highestScore + "!");
             }
-            //end of game outputs
+            //end of match outputs/inputs
             System.out.println("Press enter to go back to menu or enter Quit to quit");
             String quitOrNo = scanner.nextLine();
             if (quitOrNo.equals("Quit")) {

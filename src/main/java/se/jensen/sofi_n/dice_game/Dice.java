@@ -1,21 +1,14 @@
-package se.jensen.sofi_n.dice_game;//KLASS DICE
-/*
- * throw()
- * */
-//RANDOM SYNTAX
-//Random random = new Random();//behöver bara skapas en gång
-//int roll = random.nextInt(1,7); //anropas för varje tärningskast
-
-
+package se.jensen.sofi_n.dice_game;
 import java.util.Random;
 
+/// CLASS DICE
 public class Dice{
-    /// VARIABLES
-    Random random = new Random();//initialises random
+    //VARIABLE
+    Random random = new Random();//creates random
 
-    /// INSTANCE METHODS
+    //INSTANCE METHOD
     /*
-    public int roll() generates a number between 1 and 7
+    public int roll() generates a number between 1 and 6
     */
     public  int roll(){
         return random.nextInt(1,7);
