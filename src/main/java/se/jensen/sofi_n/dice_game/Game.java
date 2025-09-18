@@ -1,12 +1,12 @@
 package se.jensen.sofi_n.dice_game;
-//IMPORTS
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
 ///GAME CLASS
 /*
 * The following class contains the game logic for a simple console dice game.
-* A match is set up for two players with two throws, but this can be altered through variables numberOfPlayers and
+* A match is set up for two players with two throws, but these can be altered through variables numberOfPlayers and
 * turnsPerGame respectively.
 * Game logic runs when the .init() function is called for any class object.
 * */
@@ -15,7 +15,7 @@ public class Game {
     boolean game = true;//game loop variable
     int numberOfPlayers=2;
     int turnsPerGame=2;
-    Player[] players= new Player[numberOfPlayers];
+    Player[] players= new Player[numberOfPlayers]; //holds the created Player objects in each run
 
     ///GRAPHIC VARIABLES
     private String letsGO= (
@@ -98,7 +98,8 @@ public class Game {
     /// STATIC METHODS
     /// printMenu()
     /*
-    * The printMenu() method prints ASCII grafics which relay the different options for the user at the base of the game
+    * The printMenu() method prints little ASCII grafics which relay the different options for the user at the base
+    * of the game
     */
     private static void printMenu(){
 
@@ -124,7 +125,7 @@ public class Game {
     /// INSTANCE METHODS
     /// .init()
     /*
-    * The .init() method uses console input and output to allow users to play a simple Dice Game.
+    * The .init() method starts the game which uses console input and output to allow users to play a simple Dice Game.
     * Please note that when the user exits game using Quit input in the switch-case loop, the function closes the
     * whole program.
     */
@@ -205,7 +206,7 @@ public class Game {
                             break;
 
                     }
-                    player.addToScore(diceRoll); //adding to player score (0 t initilisation)
+                    player.addToScore(diceRoll); //adding to player score (0 at first, see Player class)
                 }
             }
 
