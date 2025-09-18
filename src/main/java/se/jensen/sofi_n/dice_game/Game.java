@@ -168,10 +168,10 @@ public class Game {
                     String firstname = scanner.nextLine();
                     try{
                         players[i].setFirstName(firstname);
-                        valid=true;
+                        valid=true; //only reached if above doesn't throw exception(see Player class method .setFirstName())
                     }
                     catch(IllegalArgumentException e){
-                        System.out.println(e.getMessage());
+                        System.out.println(e.getMessage()); //see Player class method setFirstName()
                         System.out.println("Try again");
                     }
                 }
@@ -180,11 +180,11 @@ public class Game {
                     System.out.println("Enter last name:");
                     String lastname = scanner.nextLine();
                     try{
-                        players[i].setLastName(lastname);
+                        players[i].setLastName(lastname);//only reached if above doesn't throw exception(see Player class method .setLastName())
                         valid=true;
                     }
                     catch(IllegalArgumentException e){
-                        System.out.println(e.getMessage());
+                        System.out.println(e.getMessage());//see Player class method setFirstName()
                         System.out.println("Try again");
                     }
                 }
@@ -239,17 +239,20 @@ public class Game {
                     highestScore = player.getScore();
                 }
             }
+
             //find player/s with highest score and store in winners
             for (Player player : players) {
                 if (player.getScore() == highestScore) {
                     winners.add(player);
                 }
             }
+
             //announce winner
             if (winners.size() == 1) {
                 System.out.println(youWon);
                 System.out.println("Congratulations " + winners.get(0).getFullName()+"!");
             }
+
             //or announce tie
             else {
                 System.out.println(itsATie);
@@ -258,12 +261,14 @@ public class Game {
                 }
                 System.out.println("Congratulations! You got a score of " + highestScore + "!");
             }
+
             //end of match outputs/inputs
             System.out.println("Press enter to go back to menu or enter Quit to quit");
             String quitOrNo = scanner.nextLine();
             if (quitOrNo.equals("Quit")) {
                 game = false;
             }
+
         }//end of game loop
 
         scanner.close(); //close scanner

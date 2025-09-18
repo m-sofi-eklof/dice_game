@@ -10,16 +10,16 @@ public class Player {
 
     //SETTERS
     public void setFirstName(String firstName) {
-        if (firstName == null || firstName.trim().isEmpty()) {
+        if (firstName == null || firstName.trim().isEmpty()) { //throws exception for null, "" or "   " etc
             throw new IllegalArgumentException("First name cannot be empty");
         }
-        this.firstName = firstName;
+        this.firstName = firstName;//or set firstName
     }
     public void setLastName(String lastName) {
-        if   (lastName == null || lastName.trim().isEmpty()) {
+        if   (lastName == null || lastName.trim().isEmpty()) { //throws exception for null, "" or "   " etc
             throw new IllegalArgumentException("Last name cannot be empty");
         }
-        this.lastName = lastName;
+        this.lastName = lastName;//or set lastName
     }
 
     //GETTERS
