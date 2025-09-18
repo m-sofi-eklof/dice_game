@@ -156,31 +156,36 @@ public class Game {
 
             //MAKE AND STORE PLAYERS
             for (int i = 0; i < numberOfPlayers; i++) {
+
                 //create and store
                 players[i] = new Player();
+
                 //setting names
+                boolean valid =false;
                 System.out.println("PLAYER "+(i+1)+":");
-                while((players[i].getFirstName()==null)||(players[i].getFirstName().isEmpty())){
+                while(!valid){
                     System.out.println("Enter first name:");
                     String firstname = scanner.nextLine();
                     try{
                         players[i].setFirstName(firstname);
+                        valid=true;
                     }
                     catch(IllegalArgumentException e){
-                        System.out.println("Invalid first name. Try again");
-                        firstname = scanner.nextLine();
+                        System.out.println(e.getMessage());
+                        System.out.println("Try again");
                     }
                 }
-
-                while((players[i].getLastName()==null)||(players[i].getLastName().isEmpty())){
+                valid=false;
+                while(!valid){
                     System.out.println("Enter last name:");
                     String lastname = scanner.nextLine();
                     try{
                         players[i].setLastName(lastname);
+                        valid=true;
                     }
                     catch(IllegalArgumentException e){
-                        System.out.println("Invalid first name. Try again");
-                        lastname = scanner.nextLine();
+                        System.out.println(e.getMessage());
+                        System.out.println("Try again");
                     }
                 }
             }
